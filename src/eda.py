@@ -18,9 +18,20 @@ diabetes_df['Disease']=diabetes.target
 
 # Preview
 print(diabetes_df.head())
+print("description of the dataset")
+print(diabetes_df.describe())
+print("shape of the dataset")
+print(diabetes_df.shape)
+print("columns of the dataset")
+print(diabetes_df.columns)
+print("info of the dataset")
+print(diabetes_df.info())
+print("null values in the dataset")
+print(diabetes_df.isnull().sum())
 
 #Exploration
 plt.figure(figsize = (10, 10))
 sns.heatmap(diabetes_df.corr(), annot = True)
 plt.title('Correlation Heatmap of Diabetes Dataset')
 plt.show()
+
