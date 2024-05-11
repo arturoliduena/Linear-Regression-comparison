@@ -20,7 +20,7 @@ def compute_k2_AD(var, alpha_OLS, lambda_max):
     print("k_2(AD) estimator:\t{}".format(np.real(k_2AD)))
 
 def compute_k3_AD(p, var, alpha_OLS, lambda_max):
-    k_3AD = 2*var/(lambda_max*np.prod([x**2 for x in alpha_OLS])**1/p)
+    k_3AD = 2*var/(lambda_max*np.prod([x**2 for x in alpha_OLS])**(1/p))
     print("k_3(AD) estimator:\t{}".format(np.real(k_3AD.tolist()[0][0])))
 
 def compute_k4_AD(p, var, alpha_OLS, lambda_max):
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     alpha_OLS = (inv(T) * beta_OLS)
     n, p = df_standarized.shape[0], len(data_columns)
     # Compute variance
-    var = (Y.T*Y - (alpha_OLS.T * Z.T) * Y)/(1)
+    var = (Y.T*Y - (alpha_OLS.T * Z.T) * Y)/(n-p-1)
 
     compute_k1(p, var, alpha_OLS)
 
